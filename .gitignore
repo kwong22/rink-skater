@@ -1,0 +1,6 @@
+# The following files will not be included in the git repo
+# e.g., when git add . is executed
+
+# Emacs recovery files
+*~
+\#*
