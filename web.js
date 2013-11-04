@@ -3,6 +3,9 @@ var fs = require('fs');
 var app = express.createServer(express.logger());
 var htmlFile = 'index.html';
 
+app.use(express.static(__dirname + '/assets'));
+// Then reference sources like '/css/style.css'
+
 app.get('/', function(request, response) {
     response.send(fs.readFileSync(htmlFile).toString());
 });
