@@ -40,12 +40,16 @@
       /* Main body and headings */
       body{
         font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	margin: 0;
+      }
+      header {
+	margin: 32px 0 24px;
       }
       .heading, .subheading {
         font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
         text-align: center;
       }
-      p.lead {
+      <!--p.lead {
         padding-top: 1.5%;
         font-size: 24px;
         line-height: 30px;
@@ -53,24 +57,16 @@
       p {
         font-size: 18px;
         line-height: 24px;
+      }-->
+      h1, p {
+        margin: 0;
+        padding: 0;
       }
 
-      /* Video pitch and Action */
-      .pitch {
-        padding: 2.5% 0%;
-      }
-      .order {
-        padding: 2% 0%;
-      }
-      .actions {
-        background-color: #343434;
-        padding: 3% 0%;
-      }
-      .video, .thermometer, .order, .social, .statistics {
+      .wrapper {
+        margin: 0 auto;
         text-align: center;
-      }
-      .statistics h3, .statistics p {
-        color: white;
+        width: 80%;
       }
 
       /* Marketing Copy and Footer */
@@ -109,9 +105,12 @@
     </script>-->
   </head>
   <body>
-    <h1>Rink Skater Puzzle Game</h1>
-    <p>Game coming soon</p>
-    <canvas id="game" width="640" height="480" style="border:solid 1px black"></canvas>
+    <div class="wrapper">
+      <header>
+	<h1>Rink Skater Puzzle</h1>
+      </header>
+      <p>Coming soon</p>
+    </div>
     <!--<script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
