@@ -43,7 +43,7 @@
 	margin: 0;
       }
       header {
-	margin: 32px 0;
+	margin: 24px 0 12px;
       }
       .heading, .subheading {
         font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
@@ -54,19 +54,29 @@
         font-size: 24px;
         line-height: 30px;
       }
+
       p {
         font-size: 18px;
         line-height: 24px;
       }
-      h1, p {
-        margin: 0;
+
+      h1, h2, p {
+        margin: 16px auto;
         padding: 0;
       }
+
+      h1 {
+	font-size: 32px;
+      }
       
+      h2 {
+	font-size: 24px;
+      }
+
       canvas {
         display: block;
         height: 224px;
-        margin: 32px auto;
+         margin: 32px auto;
         width: 480px;
       }
 
@@ -91,11 +101,11 @@
       }
       footer p {
         font-size: 12px;
+	margin: 32px auto;
       }
       .footer a {
         color: #ccccff;
       }
-      
     </style>
   </head>
   <body>
@@ -105,7 +115,7 @@
       </header>
       <p>As explained to me by my friend, Rick, who saw it in an anime. Also, thanks to Lost Decade Games for their <a href="http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/" target="_blank">tutorial</a>, which helped me get set up.</p>
       <h2>Instructions</h2>
-      <p>Use the arrow keys to get your player to the center of the board. Your player can slide the blocks but cannot jump off of them.</p>
+      <p>Use the arrow keys to get your player to the center of the board. Your player can slide the blocks but cannot jump off of them. Press the spacebar to reset the game.</p>
       <div class="game"></div>
       <footer>
 	<p>&copy; 2013 Kelvin Wong.</p>
