@@ -17,6 +17,7 @@ var canMove;
 
 function loadMap(mapId) {
     map.length = mapDim;
+    //map = initArray(mapDim, initArray(mapDim, 0));
     for (var i = 0; i < mapDim; i++) {
 	map[i] = initArray(mapDim, 0);
     }
@@ -40,13 +41,14 @@ function loadMap(mapId) {
 	map[5][6] = 1;
 	map[6][6] = 1;
 
-	win.x = 3;
-	win.y = 3;
+	winSpot.x = 3;
+	winSpot.y = 3;
+
+	player.x = 0;
+	player.y = 0;
+
 	break;
     }
-
-    player.x = 0;
-    player.y = 0;
 }
 
 function initArray(length, value) {
@@ -64,7 +66,8 @@ var player = {
     y: 0
 };
 
-var win = {
+// Win spot
+var winSpot = {
     x: 0,
     y: 0
 };
@@ -195,7 +198,7 @@ function slideBlock(dx, dy) {
 // Coordinate is top-left corner
 function render() {
     // Background
-    ctx.fillStyle = "rgb(180, 180, 180)";
+    ctx.fillStyle = "#ddd";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Map
@@ -203,17 +206,18 @@ function render() {
 
     // Player
     var offset = (blockSize - playerSize) / 2;
-    ctx.fillStyle = "rgb(180, 180, 0)";
+    ctx.fillStyle = "#f90"; //ffc
     ctx.fillRect(player.x * blockSize + offset, player.y * blockSize + offset, playerSize, playerSize);
 
     // Win spot
     var offset2 = (blockSize - 8) / 2;
-    ctx.fillStyle = "rgb(180, 0, 0)";
-    ctx.fillRect(win.x * blockSize + offset2, win.y * blockSize + offset2, 8, 8);
+    ctx.fillStyle = "#c00";
+    ctx.fillRect(winSpot.x * blockSize + offset2, winSpot.y * blockSize + offset2, 8, 8);
 
     // Move counter
     var movesText = "Moves: " + numMoves;
-    ctx.fillStyle = "white";
+    ctx.font = "normal 16px helvetica";
+    ctx.fillStyle = "#000";
     ctx.fillText(movesText, 224 + 4, 16);
     
     // Checks for game over here since render comes after update
@@ -227,10 +231,11 @@ function drawMap() {
     for (var i = 0; i < mapDim; i++) {
 	for (var j = 0; j < mapDim; j++) {
 	    if (map[i][j] == 1) {
-		ctx.fillStyle = "rgb(0, 0, 128)";
+		ctx.fillStyle = "#06c";
 		ctx.fillRect(i * blockSize, j * blockSize, blockSize, blockSize);
-		ctx.strokeStyle = "rgb(255, 255, 255)";
-		ctx.strokeRect(i * blockSize, j * blockSize, blockSize, blockSize);
+		//ctx.lineWidth = 1;
+		//ctx.strokeStyle = "#036"; //6cf
+		//ctx.strokeRect(i * blockSize, j * blockSize, blockSize, blockSize);
 	    }
 	}
     }
@@ -238,7 +243,7 @@ function drawMap() {
 
 
 function gameOver() {
-    return player.x == win.x && player.y == win.y;
+    return player.x == winSpot.x && player.y == winSpot.y;
 }
 
 function run() {
@@ -259,9 +264,10 @@ function stopGame() {
 }
 
 function drawWinMessage() {
-    var winText = "Congratulations! You won in " + numMoves + " moves.";
-    ctx.fillStyle = "white";
-    ctx.fillText(winText, 224 + 4, 32);
+    ctx.font = "italic 16px helvetica";
+    ctx.fillStyle = "#000";
+    ctx.fillText("Congratulations!", 224 + 4, 16 + 64);
+    ctx.fillText("You won in " + numMoves + " moves.", 224 + 4, 16 + 64 + 16 + 6);
 }
 
 startGame();
